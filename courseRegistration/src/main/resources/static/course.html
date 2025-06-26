@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Courses Table</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #00c9ff, #92fe9d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      max-width: 900px;
+      background-color: #ffffff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 14px 20px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #3f51b5;
+      color: white;
+      font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #e3f2fd;
+    }
+
+    td {
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<table id="coursesTable">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Course</th>
+    <th>Trainer</th>
+    <th>Duration (in weeks)</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- Data rows will be inserted here -->
+  </tbody>
+</table>
+
+<script>
+  async function loadCourses() {
+    try {
+      const response = await fetch('http://localhost:8080/courses');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const courses = await response.json();
+
+      const tbody = document.querySelector('#coursesTable tbody');
+      tbody.innerHTML = '';
+
+      courses.forEach(course => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${course.id}</td>
+          <td>${course.course}</td>
+          <td>${course.trainer}</td>
+          <td>${course.duration_in_weeks}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+      const tbody = document.querySelector('#coursesTable tbody');
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:red;">Failed to load data</td></tr>`;
+    }
+  }
+
+  window.onload = loadCourses;
+</script>
+</body>
+</html>

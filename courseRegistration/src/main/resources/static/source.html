@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Course Registration System</title>
+    <style>
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #00c9ff, #92fe9d);
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        h1 {
+          color: white;
+          font-size: 36px;
+          margin-bottom: 50px;
+          text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-container {
+          display: flex;
+          gap: 20px;
+        }
+
+        .btn-link {
+          text-decoration: none;
+        }
+
+        .btn {
+          padding: 14px 30px;
+          font-size: 16px;
+          font-weight: bold;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+          display: inline-block;
+          color: white;
+        }
+
+        .btn-1 {
+          background-color: #4CAF50;
+        }
+
+        .btn-1:hover {
+          background-color: #45a049;
+        }
+
+        .btn-2 {
+          background-color: #2196F3;
+        }
+
+        .btn-2:hover {
+          background-color: #0b7dda;
+        }
+
+        .btn-3 {
+          background-color: #f44336;
+        }
+
+        .btn-3:hover {
+          background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Course Registration System</h1>
+
+<div class="button-container">
+    <a href="Register.html" class="btn-link"><div class="btn btn-1">Register a course</div></a>
+    <a href="course.html" class="btn-link"><div class="btn btn-2">View Courses</div></a>
+    <a href="enrolled.html" class="btn-link"><div class="btn btn-3">enrolled students</div></a>
+</div>
+
+</body>
+</html>
